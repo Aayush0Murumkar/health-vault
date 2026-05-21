@@ -5,6 +5,5 @@ const { protect } = require('../middleware/auth');
 const auditLogger = require('../middleware/auditLogger');
 
 router.post('/generate', protect, generateQR);
-router.post('/scan', auditLogger('QR_SCANNED'), scanQR); // No auth for emergency access
-
+router.post('/scan', auditLogger('QR_SCANNED'), scanQR);
 module.exports = router;

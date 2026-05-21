@@ -4,16 +4,23 @@ const { registerUser, loginUser, getMe } = require('../controllers/authControlle
 const { protect } = require('../middleware/auth');
 const auditLogger = require('../middleware/auditLogger');
 const { body } = require('express-validator');
+const rateLimit = require('express-rate-limit');
 
-// Validation array example to satisfy express-validator usage
+const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 5 });
+
 const registerValidation = [
-  body('name').notEmpty().withMessage('Name is required'),
-  body('phone').notEmpty().withMessage('Phone is required'),
-  body('password').notEmpty().withMessage('Password is required'),
+  body('name').trim().notEmpty().escape(),
+  body('phone').trim().matches(/^\d{10}$/),
+  body('password').isLength({ min: 6 })
 ];
 
-router.post('/register', registerValidation, auditLogger('REGISTER'), registerUser);
-router.post('/login', auditLogger('LOGIN'), loginUser);
+const loginValidation = [
+  body('phone').trim().matches(/^\d{10}$/),
+  body('password').isLength({ min: 6 })
+];
+
+router.post('/register', authLimiter, registerValidation, auditLogger('REGISTER'), registerUser);
+router.post('/login', authLimiter, loginValidation, auditLogger('LOGIN'), loginUser);
 router.get('/me', protect, getMe);
 
 module.exports = router;

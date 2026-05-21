@@ -28,19 +28,10 @@ const auditLogger = (actionName) => async (req, res, next) => {
       }
 
       try {
-        await AuditLog.create({
-          userId,
-          action: actionName,
-          details,
-          ipAddress: req.ip
-        });
-      } catch (err) {
-        console.error('Audit Log Error:', err);
-      }
+        await AuditLog.create({ userId, action: actionName, details, ipAddress: req.ip });
+      } catch (err) { }
     }
   });
-
   next();
 };
-
 module.exports = auditLogger;
