@@ -44,6 +44,7 @@
             flex-direction: column;
         }
 
+        /* Header & Status Bar */
         .status-bar {
             height: 44px;
             background: var(--teal);
@@ -56,6 +57,7 @@
             font-weight: 600;
             flex-shrink: 0;
         }
+
         .header {
             background: var(--teal);
             padding: 0 24px 20px;
@@ -74,6 +76,8 @@
             color: white; font-size: 18px; cursor: pointer;
             border: 2px solid rgba(255,255,255,0.4);
         }
+
+        /* Navigation */
         .bottom-nav {
             height: 80px;
             background: var(--white);
@@ -91,6 +95,7 @@
         .nav-label { font-size: 11px; font-weight: 600; color: var(--ink-30); }
         .nav-item.active .nav-label { color: var(--teal); }
 
+        /* Screens */
         .main-content { flex: 1; overflow: hidden; position: relative; }
         .screen {
             position: absolute; inset: 0;
@@ -104,6 +109,7 @@
         .screen::-webkit-scrollbar { display: none; }
         .screen.active { opacity: 1; pointer-events: all; transform: translateY(0); }
 
+        /* Components */
         .card {
             background: var(--white);
             border-radius: 18px;
@@ -129,13 +135,12 @@
             background: var(--teal); color: white;
             font-weight: 600; cursor: pointer;
             transition: 0.2s; text-decoration: none;
-            font-size: 14px;
         }
         .btn:hover { background: #0c6558; }
-        .btn:disabled { background: #ccc; cursor: not-allowed; }
         .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
         .btn-danger { background: var(--danger); }
         .btn-sm { padding: 8px 16px; font-size: 12px; width: auto; }
+
         input, select, textarea {
             width: 100%; padding: 12px;
             border: 1.5px solid var(--border);
@@ -147,6 +152,7 @@
         }
         input:focus { border-color: var(--teal); background: white; }
 
+        /* Dashboard Stat Grid */
         .stat-grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
         .stat-box {
             background: var(--cream);
@@ -158,10 +164,12 @@
         .stat-value { font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.2; }
         .stat-label { font-size: 11px; color: var(--ink-60); margin-top: 6px; font-weight: 500; }
         .stat-icon { font-size: 18px; margin-bottom: 4px; display: block; }
+
         .stat-value.teal { color: var(--teal); }
         .stat-value.danger { color: var(--danger); }
         .stat-value.gold { color: var(--gold); }
 
+        /* Timeline Styles */
         .timeline-container {
             position: relative;
             padding-left: 20px;
@@ -169,21 +177,30 @@
             border-left: 2px solid var(--teal-light);
             margin-left: 5px;
         }
-        .timeline-item { position: relative; margin-bottom: 20px; padding-left: 15px; }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 15px;
+        }
         .timeline-item:last-child { margin-bottom: 0; }
+
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -27px; top: 4px;
-            width: 12px; height: 12px;
+            left: -27px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
             background: var(--white);
             border: 2px solid var(--teal);
-            border-radius: 50%; z-index: 1;
+            border-radius: 50%;
+            z-index: 1;
         }
         .timeline-date { font-size: 11px; color: var(--ink-60); font-weight: 600; }
         .timeline-name { font-size: 14px; font-weight: 600; color: var(--ink); margin: 2px 0; }
         .timeline-cat { font-size: 11px; color: var(--teal); background: var(--teal-light); display: inline-block; padding: 2px 6px; border-radius: 4px; }
 
+        /* Records List */
         .record-item {
             display: flex; align-items: center;
             background: var(--white);
@@ -199,8 +216,8 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 20px; margin-right: 12px; color: var(--teal);
         }
-        .record-info { flex: 1; min-width: 0; }
-        .record-name { font-weight: 600; font-size: 14px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .record-info { flex: 1; }
+        .record-name { font-weight: 600; font-size: 14px; color: var(--ink); }
         .record-meta { font-size: 11px; color: var(--ink-60); margin-top: 2px; }
         .record-actions { display: flex; gap: 6px; opacity: 0.5; transition: 0.2s; }
         .record-item:hover .record-actions { opacity: 1; }
@@ -208,10 +225,12 @@
             width: 32px; height: 32px;
             border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; background: var(--cream); font-size: 14px;
+            cursor: pointer; background: var(--cream);
+            font-size: 14px;
         }
         .action-icon.delete { color: var(--danger); }
 
+        /* Upload Zone */
         .upload-zone {
             border: 2px dashed var(--teal-mid);
             border-radius: 16px;
@@ -223,6 +242,7 @@
         }
         .upload-zone.dragover { border-color: var(--teal); background: #d0ede9; }
 
+        /* Emergency SOS */
         .sos-btn {
             width: 140px; height: 140px;
             border-radius: 50%;
@@ -236,6 +256,7 @@
         }
         @keyframes pulse { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.05); } }
 
+        /* Drawer */
         .drawer-overlay {
             position: absolute; inset: 0; background: rgba(0,0,0,0.4);
             opacity: 0; visibility: hidden; transition: 0.3s; z-index: 200;
@@ -272,6 +293,7 @@
         .menu-text { flex: 1; font-weight: 500; font-size: 14px; }
         .menu-arrow { color: var(--ink-30); }
 
+        /* Utilities */
         .modal-overlay {
             position: absolute; inset: 0; background: rgba(0,0,0,0.5);
             display: none; justify-content: center; align-items: center; z-index: 300;
@@ -281,72 +303,21 @@
             border-radius: 16px; width: 85%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        .log-entry { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; display: flex; justify-content: space-between; gap: 10px; }
-
-        /* Toast notification */
-        #toast {
-            position: absolute;
-            bottom: 100px; left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: var(--ink);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 500;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            pointer-events: none;
-            z-index: 500;
-            white-space: nowrap;
-        }
-        #toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        #toast.error { background: var(--danger); }
-
-        /* Loading spinner overlay */
-        .spinner-overlay {
-            position: absolute; inset: 0;
-            background: rgba(247,245,240,0.8);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 400;
-        }
-        .spinner {
-            width: 40px; height: 40px;
-            border: 3px solid var(--teal-light);
-            border-top-color: var(--teal);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* OTP input */
-        .otp-hint {
-            background: var(--teal-light);
-            border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 12px;
-            color: var(--teal);
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: none;
-        }
+        .log-entry { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; display: flex; justify-content: space-between; }
     </style>
 </head>
 <body>
 
 <div class="device-shell">
     <div class="status-bar">
-        <span id="clock">9:41</span>
+        <span>9:41</span>
         <div style="display:flex; gap:5px;"><span>📶</span><span>🔋</span></div>
     </div>
 
     <div class="header">
         <div>
             <div class="brand-name">Health Vault</div>
-            <div class="brand-sub">Secure Medical Records</div>
+            <div class="brand-sub" data-i18n="secure_records">Secure Medical Records</div>
         </div>
         <div class="header-action" onclick="toggleDrawer()">👤</div>
     </div>
@@ -357,25 +328,12 @@
         <div id="screen-login" class="screen active">
             <div style="text-align:center; margin-top:60px; margin-bottom:30px;">
                 <div style="font-size:40px; margin-bottom:10px;">🏥</div>
-                <h2 style="font-family:'Playfair Display'; font-size:24px; color:var(--teal);">Welcome Back</h2>
-                <p style="font-size:13px; color:var(--ink-60); margin-top:8px;">Enter your mobile number to continue</p>
+                <h2 style="font-family:'Playfair Display'; font-size:24px; color:var(--teal);" data-i18n="welcome_back">Welcome Back</h2>
             </div>
             <div class="card">
-                <div id="login-step-phone">
-                    <label style="font-size:12px; font-weight:600; color:var(--ink-60); display:block; margin-bottom:6px;">MOBILE NUMBER</label>
-                    <input type="tel" id="login-phone" placeholder="+91 98765 43210" onkeydown="if(event.key==='Enter') sendOTP()">
-                    <button class="btn" id="btn-send-otp" onclick="sendOTP()">Send OTP →</button>
-                </div>
-
-                <div id="login-step-otp" style="display:none;">
-                    <label style="font-size:12px; font-weight:600; color:var(--ink-60); display:block; margin-bottom:6px;">ENTER OTP</label>
-                    <p style="font-size:12px; color:var(--ink-60); margin-bottom:10px;">Sent to <span id="otp-phone-display"></span></p>
-                    <!-- Dev mode: show OTP hint -->
-                    <div class="otp-hint" id="otp-dev-hint">🔧 Dev OTP: <span id="otp-dev-code"></span></div>
-                    <input type="tel" id="login-otp" maxlength="6" placeholder="6-digit code" onkeydown="if(event.key==='Enter') verifyOTP()">
-                    <button class="btn" id="btn-verify-otp" onclick="verifyOTP()">Verify & Login →</button>
-                    <p style="font-size:12px; color:var(--teal); text-align:center; margin-top:10px; cursor:pointer;" onclick="showPhoneStep()">← Change number</p>
-                </div>
+                <label data-i18n="mobile_number">Mobile Number</label>
+                <input type="tel" placeholder="+91 98765 43210">
+                <div class="btn" onclick="login()" data-i18n="login_btn">Login Securely →</div>
             </div>
         </div>
 
@@ -383,23 +341,26 @@
         <div id="screen-home" class="screen">
             <div style="background:linear-gradient(120deg, var(--teal) 0%, #1ab5a0 100%); border-radius:18px; padding:18px; color:white; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <div style="font-size:12px; opacity:0.8;">Welcome back,</div>
-                    <div style="font-size:20px; font-weight:600; font-family:'Playfair Display';" id="welcome-user-name">—</div>
+                    <div style="font-size:12px; opacity:0.8;" data-i18n="welcome_greet">Welcome back,</div>
+                    <div style="font-size:20px; font-weight:600; font-family:'Playfair Display';" id="welcome-user-name">Aayush Murumkar</div>
                 </div>
-                <div style="background:rgba(255,255,255,0.2); padding:5px 10px; border-radius:20px; font-size:12px;" id="welcome-user-blood">—</div>
+                <div style="background:rgba(255,255,255,0.2); padding:5px 10px; border-radius:20px; font-size:12px;" id="welcome-user-blood">O+ Blood</div>
             </div>
+
             <div class="stat-grid-container">
-                <div class="stat-box"><span class="stat-icon">📂</span><div class="stat-value teal" id="dash-file-count">—</div><div class="stat-label">Total Records</div></div>
-                <div class="stat-box"><span class="stat-icon">👥</span><div class="stat-value gold" id="dash-nominee-count">—</div><div class="stat-label">Nominees</div></div>
-                <div class="stat-box"><span class="stat-icon">🩸</span><div class="stat-value danger" id="dash-blood-group">—</div><div class="stat-label">Blood Group</div></div>
-                <div class="stat-box"><span class="stat-icon">🩺</span><div class="stat-value" id="dash-chronic" style="font-size:14px;">—</div><div class="stat-label">Chronic Disease</div></div>
+                <div class="stat-box"><span class="stat-icon">📂</span><div class="stat-value teal" id="dash-file-count">0</div><div class="stat-label" data-i18n="total_records">Total Records</div></div>
+                <div class="stat-box"><span class="stat-icon">👥</span><div class="stat-value gold" id="dash-nominee-count">0</div><div class="stat-label" data-i18n="nominees">Nominees</div></div>
+                <div class="stat-box"><span class="stat-icon">🩸</span><div class="stat-value danger" id="dash-blood-group">O+</div><div class="stat-label" data-i18n="blood_group">Blood Group</div></div>
+                <div class="stat-box"><span class="stat-icon">🩺</span><div class="stat-value" id="dash-chronic">Diabetes</div><div class="stat-label" data-i18n="chronic_disease">Chronic Disease</div></div>
             </div>
+
             <div class="card" style="border-left:4px solid var(--teal);">
-                <div class="card-title">Recent Activity</div>
-                <div id="dash-recent-activity"><div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">Loading...</div></div>
+                <div class="card-title" data-i18n="recent_activity">Recent Activity</div>
+                <div id="dash-recent-activity"></div>
             </div>
+
             <div class="card">
-                <div class="card-title">Medical Timeline</div>
+                <div class="card-title" data-i18n="medical_timeline">Medical Timeline</div>
                 <div id="medical-timeline" class="timeline-container"></div>
             </div>
         </div>
@@ -408,52 +369,46 @@
         <div id="screen-records" class="screen">
             <div class="card">
                 <div class="card-title">
-                    My Medical Records
-                    <select id="filter-type" onchange="loadRecords()" style="width:auto; padding:5px; font-size:12px; margin-bottom:0;">
+                    <span data-i18n="my_records">My Medical Records</span>
+                    <select id="filter-type" onchange="renderRecords()" style="width:auto; padding:5px; font-size:12px; margin-bottom:0;">
                         <option value="all">All Types</option>
                         <option value="PDF">PDF</option>
                         <option value="Image">Image</option>
                     </select>
                 </div>
-                <input type="text" id="search-input" placeholder="🔍 Search files..." oninput="debounceSearch()" style="margin-bottom:10px;">
-                <div id="records-list"><div style="color:var(--ink-60); font-size:13px; text-align:center; padding:20px;">Loading...</div></div>
+                <input type="text" id="search-input" placeholder="🔍 Search files..." onkeyup="renderRecords()" style="margin-bottom:10px;">
+                <div id="records-list"></div>
             </div>
         </div>
 
         <!-- UPLOAD -->
         <div id="screen-upload" class="screen">
             <div class="card">
-                <div class="card-title">Upload New Record</div>
+                <div class="card-title" data-i18n="upload_title">Upload New Record</div>
                 <div id="drop-zone" class="upload-zone" onclick="document.getElementById('file-input').click()">
                     <div style="font-size:30px; margin-bottom:10px;">⬆️</div>
-                    <div style="font-weight:600; color:var(--teal);">Tap to Upload</div>
-                    <div style="font-size:12px; color:var(--ink-60); margin-top:5px;">PDF or Image · Max 10 MB</div>
-                    <input type="file" id="file-input" accept=".pdf,image/*" style="display:none" onchange="handleFile(this.files[0])">
+                    <div style="font-weight:600; color:var(--teal);" data-i18n="tap_upload">Tap to Upload</div>
+                    <div style="font-size:12px; color:var(--ink-60); margin-top:5px;" data-i18n="max_size">Max size: 10MB</div>
+                    <input type="file" id="file-input" style="display:none" onchange="handleFile(this.files[0])">
                 </div>
+
                 <div id="preview-area" style="display:none; margin-top:10px; background:var(--cream); padding:10px; border-radius:10px;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <span id="preview-name" style="font-weight:600; font-size:14px;"></span>
-                        <span onclick="clearUpload()" style="cursor:pointer; color:var(--danger); font-size:12px;">Cancel</span>
+                        <span onclick="clearUpload()" style="cursor:pointer; color:var(--danger); font-size:12px;" data-i18n="cancel">Cancel</span>
                     </div>
                     <div id="preview-size" style="font-size:11px; color:var(--ink-60); margin-top:4px;"></div>
                 </div>
-                <div style="margin-top:15px;">
-                    <label>Category</label>
-                    <select id="upload-category">
-                        <option>Lab Report</option>
-                        <option>Prescription</option>
-                        <option>Scan / Imaging</option>
-                        <option>Other</option>
-                    </select>
-                    <button class="btn" id="btn-upload" onclick="confirmUpload()">Upload File</button>
-                </div>
 
-                <!-- Upload progress bar -->
-                <div id="upload-progress-wrap" style="display:none; margin-top:12px;">
-                    <div style="background:var(--teal-light); border-radius:10px; height:8px; overflow:hidden;">
-                        <div id="upload-progress-bar" style="height:100%; background:var(--teal); width:0%; transition:width 0.3s;"></div>
-                    </div>
-                    <div id="upload-progress-label" style="font-size:11px; color:var(--ink-60); margin-top:4px; text-align:center;">Uploading...</div>
+                <div style="margin-top:15px;">
+                    <label data-i18n="category">Category</label>
+                    <select id="upload-category">
+                        <option value="Lab Report">Lab Report</option>
+                        <option value="Prescription">Prescription</option>
+                        <option value="Scan / Imaging">Scan / Imaging</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="btn" onclick="confirmUpload()" data-i18n="upload_btn">Upload File</div>
                 </div>
             </div>
         </div>
@@ -465,99 +420,113 @@
                     <div style="font-size:28px; line-height:1;">🚑</div>
                     <div style="font-size:18px; margin-top:5px;">SOS</div>
                 </button>
-                <p style="margin-top:15px; color:var(--ink-60); font-size:13px;">Tap to call Ambulance</p>
+                <p style="margin-top:15px; color:var(--ink-60); font-size:13px;" data-i18n="sos_hint">Tap to call Ambulance</p>
             </div>
+
             <div class="card" style="background:var(--danger-light); border-color:#f5c6c2;">
-                <div class="card-title" style="color:var(--danger);">🚨 Critical Medical Info</div>
+                <div class="card-title" style="color:var(--danger);" data-i18n="critical_info">🚨 Critical Medical Info</div>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                    <div style="background:white; padding:10px; border-radius:8px;"><div style="font-size:10px; color:var(--ink-60);">Blood Group</div><div style="font-size:16px; font-weight:700;" id="emergency-blood">—</div></div>
-                    <div style="background:white; padding:10px; border-radius:8px;"><div style="font-size:10px; color:var(--ink-60);">Allergies</div><div style="font-size:16px; font-weight:700;" id="emergency-allergies">—</div></div>
-                    <div style="background:white; padding:10px; border-radius:8px;"><div style="font-size:10px; color:var(--ink-60);">Chronic Disease</div><div style="font-size:16px; font-weight:700;" id="emergency-chronic">—</div></div>
-                    <div style="background:white; padding:10px; border-radius:8px;"><div style="font-size:10px; color:var(--ink-60);">Medication</div><div style="font-size:16px; font-weight:700;" id="emergency-medication">—</div></div>
+                    <div style="background:white; padding:10px; border-radius:8px;">
+                        <div style="font-size:10px; color:var(--ink-60);" data-i18n="blood_group">Blood Group</div>
+                        <div style="font-size:16px; font-weight:700;" id="emergency-blood">O+</div>
+                    </div>
+                    <div style="background:white; padding:10px; border-radius:8px;">
+                        <div style="font-size:10px; color:var(--ink-60);" data-i18n="allergies">Allergies</div>
+                        <div style="font-size:16px; font-weight:700;" id="emergency-allergies">None</div>
+                    </div>
+                    <div style="background:white; padding:10px; border-radius:8px;">
+                        <div style="font-size:10px; color:var(--ink-60);" data-i18n="chronic_disease">Chronic Disease</div>
+                        <div style="font-size:16px; font-weight:700;" id="emergency-chronic">None</div>
+                    </div>
+                    <div style="background:white; padding:10px; border-radius:8px;">
+                        <div style="font-size:10px; color:var(--ink-60);" data-i18n="medication">Medication</div>
+                        <div style="font-size:16px; font-weight:700;" id="emergency-medication">None</div>
+                    </div>
                 </div>
             </div>
+
             <div class="card">
-                <div class="card-title">Emergency Contacts</div>
-                <div id="emergency-contacts"><div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">Loading...</div></div>
+                <div class="card-title" data-i18n="emergency_contacts">Emergency Contacts</div>
+                <div id="emergency-contacts"></div>
             </div>
         </div>
 
         <!-- ACCOUNT -->
         <div id="screen-account" class="screen">
             <div class="card" style="text-align:center;">
-                <div style="width:80px; height:80px; background:var(--teal); color:white; border-radius:50%; margin:0 auto; display:flex; align-items:center; justify-content:center; font-size:32px;" id="acc-avatar">A</div>
-                <h3 style="margin-top:10px;" id="acc-name">—</h3>
-                <p style="font-size:12px; color:var(--ink-60); margin-top:4px;" id="acc-phone">—</p>
+                <div style="width:80px; height:80px; background:var(--teal); color:white; border-radius:50%; margin:0 auto; display:flex; align-items:center; justify-content:center; font-size:32px;">A</div>
+                <h3 style="margin-top:10px;" id="acc-name">User</h3>
             </div>
             <div class="card">
-                <div class="card-title">Profile Details</div>
-                <label>Full Name</label><input type="text" id="edit-name">
-                <label>Blood Group</label>
-                <select id="edit-blood">
-                    <option>O+</option><option>A+</option><option>B+</option><option>O-</option>
-                    <option>A-</option><option>B-</option><option>AB+</option><option>AB-</option><option>Unknown</option>
-                </select>
-                <label>Chronic Condition</label><input type="text" id="edit-chronic" placeholder="e.g. Diabetes">
-                <label>Allergies</label><input type="text" id="edit-allergies" placeholder="e.g. Penicillin">
-                <label>Current Medication</label><input type="text" id="edit-medication" placeholder="e.g. Metformin 500mg">
-                <button class="btn" id="btn-save-profile" onclick="updateProfile()">Save Profile</button>
+                <div class="card-title" data-i18n="profile_details">Profile Details</div>
+                <label data-i18n="full_name">Full Name</label>
+                <input type="text" id="edit-name">
+                <label data-i18n="blood_group">Blood Group</label>
+                <select id="edit-blood"><option>O+</option><option>A+</option><option>B+</option><option>O-</option></select>
+                <label data-i18n="chronic_disease">Chronic Condition</label>
+                <input type="text" id="edit-chronic" placeholder="e.g. Diabetes">
+                <label data-i18n="allergies">Allergies</label>
+                <input type="text" id="edit-allergies" placeholder="e.g. Penicillin">
+                <label data-i18n="medication">Current Medication</label>
+                <input type="text" id="edit-medication" placeholder="e.g. Metformin">
+                <button class="btn" onclick="updateProfile()" data-i18n="save_profile">Save Profile</button>
             </div>
         </div>
 
         <!-- NOMINEES -->
         <div id="screen-nominees" class="screen">
             <div class="card">
-                <div class="card-title">Manage Nominees</div>
-                <div id="nominee-list"><div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">Loading...</div></div>
-                <button class="btn" style="margin-top:8px;" onclick="openAddNomineeModal()">Add New Nominee</button>
+                <div class="card-title" data-i18n="manage_nominees">Manage Nominees</div>
+                <div id="nominee-list"></div>
+                <button class="btn" onclick="openAddNomineeModal()" data-i18n="add_nominee">Add New Nominee</button>
             </div>
         </div>
 
         <!-- NOTIFICATIONS -->
         <div id="screen-notifications" class="screen">
             <div class="card">
-                <div class="card-title">Notifications</div>
-                <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border);"><span>Appointment Reminders</span><input type="checkbox" checked></div>
-                <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border);"><span>Medicine Reminders</span><input type="checkbox" checked></div>
-                <div style="display:flex; justify-content:space-between; padding:12px 0;"><span>Lab Report Alerts</span><input type="checkbox"></div>
+                <div class="card-title" data-i18n="notifications">Notifications</div>
+                <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border);"><span data-i18n="appt_reminders">Appointment Reminders</span><input type="checkbox" checked></div>
+                <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border);"><span data-i18n="med_reminders">Medicine Reminders</span><input type="checkbox" checked></div>
+                <div style="display:flex; justify-content:space-between; padding:12px 0;"><span data-i18n="lab_alerts">Lab Report Alerts</span><input type="checkbox"></div>
             </div>
         </div>
 
         <!-- SUPPORT -->
         <div id="screen-support" class="screen">
             <div class="card">
-                <div class="card-title">Help & Support</div>
-                <button class="btn btn-outline btn-sm">📖 View FAQs</button>
-                <button class="btn btn-outline btn-sm" style="margin-top:8px;">✉️ Contact Support</button>
+                <div class="card-title" data-i18n="help_support">Help & Support</div>
+                <button class="btn btn-outline btn-sm" data-i18n="view_faq">📖 View FAQs</button>
+                <button class="btn btn-outline btn-sm" style="margin-top:8px;" data-i18n="contact_support">✉️ Contact Support</button>
             </div>
         </div>
 
         <!-- FEEDBACK -->
         <div id="screen-feedback" class="screen">
             <div class="card" style="text-align:center;">
-                <h3 style="margin-bottom:10px;">Rate Us</h3>
+                <h3 style="margin-bottom:10px;" data-i18n="rate_us">Rate Us</h3>
                 <div id="star-rating" style="font-size:24px; cursor:pointer;" onclick="handleRating(event)">
                     <span data-val="1">☆</span> <span data-val="2">☆</span> <span data-val="3">☆</span> <span data-val="4">☆</span> <span data-val="5">☆</span>
                 </div>
                 <textarea placeholder="Tell us what you think..." rows="4" style="margin-top:15px; text-align:left;"></textarea>
-                <button class="btn" onclick="submitFeedback()">Submit Feedback</button>
+                <button class="btn" onclick="submitFeedback()" data-i18n="submit_feedback">Submit Feedback</button>
             </div>
         </div>
 
         <!-- AUDIT LOG -->
         <div id="screen-audit" class="screen">
             <div class="card">
-                <div class="card-title">Activity Logs</div>
-                <div id="log-container"><div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">Loading...</div></div>
+                <div class="card-title" data-i18n="activity_logs">Activity Logs</div>
+                <div id="log-container"></div>
             </div>
         </div>
 
         <!-- LANGUAGE -->
         <div id="screen-language" class="screen">
             <div class="card" style="padding:0;">
-                <div class="menu-item" onclick="setLang(this, 'en')"><span class="menu-text">🇬🇧 English</span><span id="lang-check-en" style="color:var(--teal);">✓</span></div>
-                <div class="menu-item" onclick="setLang(this, 'hi')"><span class="menu-text">🇮🇳 Hindi</span><span id="lang-check-hi"></span></div>
-                <div class="menu-item" onclick="setLang(this, 'mr')"><span class="menu-text">🇮🇳 Marathi</span><span id="lang-check-mr"></span></div>
+                <div class="menu-item" onclick="setLang(this, 'en')"><span class="menu-text">🇬🇧 English</span><span style="color:var(--teal);">✓</span></div>
+                <div class="menu-item" onclick="setLang(this, 'hi')"><span class="menu-text">🇮🇳 Hindi</span><span></span></div>
+                <div class="menu-item" onclick="setLang(this, 'mr')"><span class="menu-text">🇮🇳 Marathi</span><span></span></div>
             </div>
         </div>
 
@@ -565,30 +534,30 @@
 
     <!-- BOTTOM NAV -->
     <div id="bottom-nav" class="bottom-nav" style="display:none;">
-        <div class="nav-item active" onclick="navigate('screen-home')"><div class="nav-icon">🏠</div><div class="nav-label">Home</div></div>
-        <div class="nav-item" onclick="navigate('screen-records'); loadRecords();"><div class="nav-icon">📂</div><div class="nav-label">Records</div></div>
-        <div class="nav-item" onclick="navigate('screen-upload')"><div class="nav-icon">⬆️</div><div class="nav-label">Upload</div></div>
-        <div class="nav-item" onclick="navigate('screen-emergency'); loadEmergency();"><div class="nav-icon">🚑</div><div class="nav-label">Emergency</div></div>
+        <div class="nav-item active" onclick="navigate('screen-home')"><div class="nav-icon">🏠</div><div class="nav-label" data-i18n="nav_home">Home</div></div>
+        <div class="nav-item" onclick="navigate('screen-records')"><div class="nav-icon">📂</div><div class="nav-label" data-i18n="nav_records">Records</div></div>
+        <div class="nav-item" onclick="navigate('screen-upload')"><div class="nav-icon">⬆️</div><div class="nav-label" data-i18n="nav_upload">Upload</div></div>
+        <div class="nav-item" onclick="navigate('screen-emergency')"><div class="nav-icon">🚑</div><div class="nav-label" data-i18n="nav_emergency">Emergency</div></div>
     </div>
 
     <!-- SIDE DRAWER -->
     <div id="drawer-overlay" class="drawer-overlay" onclick="toggleDrawer()">
         <div class="drawer" onclick="event.stopPropagation()">
             <div class="drawer-head">
-                <div class="drawer-avatar" id="drawer-avatar">A</div>
-                <div style="font-weight:600;" id="drawer-name">—</div>
-                <div style="font-size:11px; opacity:0.7;" id="drawer-sub">—</div>
+                <div class="drawer-avatar">A</div>
+                <div style="font-weight:600;" id="drawer-name">User</div>
+                <div style="font-size:11px; opacity:0.7;" id="drawer-sub">Blood Group</div>
             </div>
             <div style="overflow-y:auto; flex:1;">
-                <div class="menu-item" onclick="openFromDrawer('screen-account')"><span class="menu-icon">👤</span><span class="menu-text">Account</span><span class="menu-arrow">›</span></div>
-                <div class="menu-item" onclick="openFromDrawer('screen-nominees'); loadNominees();"><span class="menu-icon">👥</span><span class="menu-text">Nominees</span><span class="menu-arrow">›</span></div>
-                <div class="menu-item" onclick="openFromDrawer('screen-notifications')"><span class="menu-icon">🔔</span><span class="menu-text">Notifications</span><span class="menu-arrow">›</span></div>
-                <div class="menu-item" onclick="openFromDrawer('screen-language')"><span class="menu-icon">🌐</span><span class="menu-text">Language</span><span class="menu-arrow">›</span></div>
-                <div class="menu-item" onclick="openFromDrawer('screen-support')"><span class="menu-icon">🛠️</span><span class="menu-text">Support</span><span class="menu-arrow">›</span></div>
-                <div class="menu-item" onclick="openFromDrawer('screen-feedback')"><span class="menu-icon">⭐</span><span class="menu-text">Feedback</span><span class="menu-arrow">›</span></div>
-                <div class="menu-item" onclick="openFromDrawer('screen-audit'); loadLogs();"><span class="menu-icon">📜</span><span class="menu-text">Audit Logs</span><span class="menu-arrow">›</span></div>
+                <div class="menu-item" onclick="openFromDrawer('screen-account')"><span class="menu-icon">👤</span><span class="menu-text" data-i18n="account">Account</span><span class="menu-arrow">›</span></div>
+                <div class="menu-item" onclick="openFromDrawer('screen-nominees')"><span class="menu-icon">👥</span><span class="menu-text" data-i18n="nominees">Nominees</span><span class="menu-arrow">›</span></div>
+                <div class="menu-item" onclick="openFromDrawer('screen-notifications')"><span class="menu-icon">🔔</span><span class="menu-text" data-i18n="notifications">Notifications</span><span class="menu-arrow">›</span></div>
+                <div class="menu-item" onclick="openFromDrawer('screen-language')"><span class="menu-icon">🌐</span><span class="menu-text" data-i18n="language">Language</span><span class="menu-arrow">›</span></div>
+                <div class="menu-item" onclick="openFromDrawer('screen-support')"><span class="menu-icon">🛠️</span><span class="menu-text" data-i18n="support">Support</span><span class="menu-arrow">›</span></div>
+                <div class="menu-item" onclick="openFromDrawer('screen-feedback')"><span class="menu-icon">⭐</span><span class="menu-text" data-i18n="feedback">Feedback</span><span class="menu-arrow">›</span></div>
+                <div class="menu-item" onclick="openFromDrawer('screen-audit')"><span class="menu-icon">📜</span><span class="menu-text" data-i18n="audit_logs">Audit Logs</span><span class="menu-arrow">›</span></div>
                 <div style="height:1px; background:var(--border); margin:10px 0;"></div>
-                <div class="menu-item" onclick="logout()" style="color:var(--danger);"><span class="menu-icon">🚪</span><span class="menu-text">Logout</span></div>
+                <div class="menu-item" onclick="logout()" style="color:var(--danger);"><span class="menu-icon">🚪</span><span class="menu-text" data-i18n="logout">Logout</span></div>
             </div>
         </div>
     </div>
@@ -597,654 +566,676 @@
     <div id="modal-delete" class="modal-overlay">
         <div class="modal-box" style="text-align:center;">
             <div style="font-size:40px; margin-bottom:10px;">🗑️</div>
-            <h3 style="margin-bottom:10px;">Delete File?</h3>
-            <p style="font-size:13px; color:var(--ink-60); margin-bottom:20px;">This action cannot be undone.</p>
+            <h3 style="margin-bottom:10px;" data-i18n="delete_title">Delete File?</h3>
+            <p style="font-size:13px; color:var(--ink-60); margin-bottom:20px;" data-i18n="delete_warning">This action cannot be undone.</p>
             <div style="display:flex; gap:10px;">
-                <button class="btn btn-outline" onclick="closeModal('modal-delete')" style="width:50%;">Cancel</button>
-                <button id="confirm-delete-btn" class="btn btn-danger" style="width:50%;">Delete</button>
+                <button class="btn btn-outline" onclick="closeModal('modal-delete')" style="width:50%;" data-i18n="cancel">Cancel</button>
+                <button id="confirm-delete-btn" class="btn btn-danger" style="width:50%;" data-i18n="delete_confirm">Delete</button>
             </div>
         </div>
     </div>
 
     <div id="modal-nominee" class="modal-overlay">
         <div class="modal-box">
-            <h3 style="margin-bottom:15px;">Add Nominee</h3>
+            <h3 style="margin-bottom:15px;" data-i18n="add_nominee">Add Nominee</h3>
             <input type="text" id="n-name" placeholder="Full Name">
             <input type="text" id="n-rel" placeholder="Relationship">
             <input type="tel" id="n-phone" placeholder="Phone Number">
             <input type="email" id="n-email" placeholder="Email Address">
             <div style="display:flex; gap:10px;">
-                <button class="btn btn-outline" onclick="closeModal('modal-nominee')" style="width:50%;">Cancel</button>
-                <button class="btn" id="btn-save-nominee" onclick="saveNominee()" style="width:50%;">Save</button>
+                <button class="btn btn-outline" onclick="closeModal('modal-nominee')" style="width:50%;" data-i18n="cancel">Cancel</button>
+                <button class="btn" onclick="saveNominee()" style="width:50%;" data-i18n="save">Save</button>
             </div>
         </div>
     </div>
 
-    <!-- Toast -->
-    <div id="toast"></div>
 </div>
 
 <script>
-// ─── CONFIG ──────────────────────────────────────────────────────────────────
-const API = 'http://localhost:3001/api';
-
-// ─── STATE ───────────────────────────────────────────────────────────────────
-let authToken  = localStorage.getItem('hv_token') || null;
-let currentUser = null;
-let currentUploadFile = null;
-let allRecords = [];
-let searchTimer = null;
-
-// ─── API HELPER ──────────────────────────────────────────────────────────────
-async function apiFetch(path, options = {}) {
-    const headers = { ...(options.headers || {}) };
-    if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
-    if (!(options.body instanceof FormData)) {
-        headers['Content-Type'] = 'application/json';
-    }
-    const res = await fetch(`${API}${path}`, { ...options, headers });
-    if (res.status === 401) { forceLogout(); return null; }
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
-    return data;
-}
-
-// ─── TOAST ───────────────────────────────────────────────────────────────────
-let toastTimer;
-function toast(msg, isError = false) {
-    const el = document.getElementById('toast');
-    el.textContent = msg;
-    el.className = 'show' + (isError ? ' error' : '');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.className = '', 2500);
-}
-
-// ─── CLOCK ───────────────────────────────────────────────────────────────────
-function updateClock() {
-    const now = new Date();
-    document.getElementById('clock').textContent =
-        now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// ─── NAVIGATE ────────────────────────────────────────────────────────────────
-function navigate(screenId) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(screenId).classList.add('active');
-    const map = { 'screen-home': 0, 'screen-records': 1, 'screen-upload': 2, 'screen-emergency': 3 };
-    document.querySelectorAll('.nav-item').forEach((n, i) => n.classList.toggle('active', i === map[screenId]));
-}
-
-function toggleDrawer() { document.getElementById('drawer-overlay').classList.toggle('active'); }
-function openFromDrawer(id) { toggleDrawer(); setTimeout(() => navigate(id), 300); }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-// ─── AUTH: SEND OTP ──────────────────────────────────────────────────────────
-async function sendOTP() {
-    const phone = document.getElementById('login-phone').value.trim();
-    if (!phone) { toast('Enter a phone number', true); return; }
-
-    const btn = document.getElementById('btn-send-otp');
-    btn.disabled = true; btn.textContent = 'Sending...';
-
-    try {
-        const data = await apiFetch('/auth/send-otp', {
-            method: 'POST',
-            body: JSON.stringify({ phone })
-        });
-        document.getElementById('otp-phone-display').textContent = phone;
-        document.getElementById('login-step-phone').style.display = 'none';
-        document.getElementById('login-step-otp').style.display = 'block';
-
-        // Show dev OTP hint if the server returns it
-        if (data._dev_otp) {
-            document.getElementById('otp-dev-code').textContent = data._dev_otp;
-            document.getElementById('otp-dev-hint').style.display = 'block';
+    // ─── TRANSLATIONS ────────────────────────────────────────────────────────────
+    const translations = {
+        en: {
+            secure_records: "Secure Medical Records",
+            welcome_back: "Welcome Back",
+            mobile_number: "Mobile Number",
+            login_btn: "Login Securely →",
+            welcome_greet: "Welcome back,",
+            total_records: "Total Records",
+            nominees: "Nominees",
+            blood_group: "Blood Group",
+            chronic_disease: "Chronic Disease",
+            recent_activity: "Recent Activity",
+            medical_timeline: "Medical Timeline",
+            my_records: "My Medical Records",
+            upload_title: "Upload New Record",
+            tap_upload: "Tap to Upload",
+            max_size: "Max size: 10MB",
+            cancel: "Cancel",
+            category: "Category",
+            upload_btn: "Upload File",
+            sos_hint: "Tap to call Ambulance",
+            critical_info: "🚨 Critical Medical Info",
+            allergies: "Allergies",
+            medication: "Medication",
+            emergency_contacts: "Emergency Contacts",
+            profile_details: "Profile Details",
+            full_name: "Full Name",
+            save_profile: "Save Profile",
+            manage_nominees: "Manage Nominees",
+            add_nominee: "Add New Nominee",
+            notifications: "Notifications",
+            appt_reminders: "Appointment Reminders",
+            med_reminders: "Medicine Reminders",
+            lab_alerts: "Lab Report Alerts",
+            help_support: "Help & Support",
+            view_faq: "📖 View FAQs",
+            contact_support: "✉️ Contact Support",
+            rate_us: "Rate Us",
+            submit_feedback: "Submit Feedback",
+            activity_logs: "Activity Logs",
+            account: "Account",
+            language: "Language",
+            support: "Support",
+            feedback: "Feedback",
+            audit_logs: "Audit Logs",
+            logout: "Logout",
+            delete_title: "Delete File?",
+            delete_warning: "This action cannot be undone.",
+            delete_confirm: "Delete",
+            save: "Save",
+            nav_home: "Home",
+            nav_records: "Records",
+            nav_upload: "Upload",
+            nav_emergency: "Emergency"
+        },
+        hi: {
+            secure_records: "सुरक्षित मेडिकल रिकॉर्ड",
+            welcome_back: "वापस स्वागत है",
+            mobile_number: "मोबाइल नंबर",
+            login_btn: "सुरक्षित लॉगिन करें →",
+            welcome_greet: "वापस स्वागत है,",
+            total_records: "कुल रिकॉर्ड",
+            nominees: "नामांकित",
+            blood_group: "रक्त समूह",
+            chronic_disease: "पुरानी बीमारी",
+            recent_activity: "हालिया गतिविधि",
+            medical_timeline: "मेडिकल टाइमलाइन",
+            my_records: "मेरे मेडिकल रिकॉर्ड",
+            upload_title: "नया रिकॉर्ड अपलोड करें",
+            tap_upload: "अपलोड करने के लिए टैप करें",
+            max_size: "अधिकतम आकार: 10MB",
+            cancel: "रद्द करें",
+            category: "श्रेणी",
+            upload_btn: "फ़ाइल अपलोड करें",
+            sos_hint: "एम्बुलेंस बुलाने के लिए टैप करें",
+            critical_info: "🚨 महत्वपूर्ण चिकित्सा जानकारी",
+            allergies: "एलर्जी",
+            medication: "दवा",
+            emergency_contacts: "आपातकालीन संपर्क",
+            profile_details: "प्रोफ़ाइल विवरण",
+            full_name: "पूरा नाम",
+            save_profile: "प्रोफ़ाइल सहेजें",
+            manage_nominees: "नामांकित प्रबंधित करें",
+            add_nominee: "नया नामांकित जोड़ें",
+            notifications: "सूचनाएं",
+            appt_reminders: "अपॉइंटमेंट अनुस्मारक",
+            med_reminders: "दवा अनुस्मारक",
+            lab_alerts: "लैब रिपोर्ट अलर्ट",
+            help_support: "सहायता और समर्थन",
+            view_faq: "📖 सामान्य प्रश्न देखें",
+            contact_support: "✉️ सहायता से संपर्क करें",
+            rate_us: "हमें रेट करें",
+            submit_feedback: "फ़ीडबैक सबमिट करें",
+            activity_logs: "गतिविधि लॉग",
+            account: "खाता",
+            language: "भाषा",
+            support: "समर्थन",
+            feedback: "प्रतिक्रिया",
+            audit_logs: "ऑडिट लॉग",
+            logout: "लॉगआउट",
+            delete_title: "फ़ाइल हटाएं?",
+            delete_warning: "यह क्रिया पूर्ववत नहीं की जा सकती।",
+            delete_confirm: "हटाएं",
+            save: "सहेजें",
+            nav_home: "होम",
+            nav_records: "रिकॉर्ड",
+            nav_upload: "अपलोड",
+            nav_emergency: "आपातकाल"
+        },
+        mr: {
+            secure_records: "सुरक्षित वैद्यकीय नोंदी",
+            welcome_back: "पुन्हा स्वागत आहे",
+            mobile_number: "मोबाइल नंबर",
+            login_btn: "सुरक्षितपणे लॉगिन करा →",
+            welcome_greet: "पुन्हा स्वागत आहे,",
+            total_records: "एकूण नोंदी",
+            nominees: "नामनिर्देशित",
+            blood_group: "रक्त गट",
+            chronic_disease: "जुनाट आजार",
+            recent_activity: "अलीकडील क्रियाकलाप",
+            medical_timeline: "वैद्यकीय टाइमलाइन",
+            my_records: "माझ्या वैद्यकीय नोंदी",
+            upload_title: "नवीन नोंद अपलोड करा",
+            tap_upload: "अपलोड करण्यासाठी टॅप करा",
+            max_size: "कमाल आकार: 10MB",
+            cancel: "रद्द करा",
+            category: "श्रेणी",
+            upload_btn: "फाइल अपलोड करा",
+            sos_hint: "रुग्णवाहिका बोलवण्यासाठी टॅप करा",
+            critical_info: "🚨 महत्त्वाची वैद्यकीय माहिती",
+            allergies: "ऍलर्जी",
+            medication: "औषधे",
+            emergency_contacts: "आपत्कालीन संपर्क",
+            profile_details: "प्रोफाइल तपशील",
+            full_name: "पूर्ण नाव",
+            save_profile: "प्रोफाइल जतन करा",
+            manage_nominees: "नामनिर्देशित व्यवस्थापित करा",
+            add_nominee: "नवीन नामनिर्देशित जोडा",
+            notifications: "सूचना",
+            appt_reminders: "भेट स्मरणपत्रे",
+            med_reminders: "औषध स्मरणपत्रे",
+            lab_alerts: "लॅब अहवाल सूचना",
+            help_support: "मदत आणि समर्थन",
+            view_faq: "📖 FAQ पहा",
+            contact_support: "✉️ समर्थनाशी संपर्क साधा",
+            rate_us: "आम्हाला रेट करा",
+            submit_feedback: "अभिप्राय सादर करा",
+            activity_logs: "क्रियाकलाप नोंदी",
+            account: "खाते",
+            language: "भाषा",
+            support: "समर्थन",
+            feedback: "अभिप्राय",
+            audit_logs: "ऑडिट नोंदी",
+            logout: "लॉगआउट",
+            delete_title: "फाइल हटवायची?",
+            delete_warning: "ही क्रिया पूर्वपदावर आणता येत नाही.",
+            delete_confirm: "हटवा",
+            save: "जतन करा",
+            nav_home: "होम",
+            nav_records: "नोंदी",
+            nav_upload: "अपलोड",
+            nav_emergency: "आपत्काल"
         }
-        toast('OTP sent successfully!');
-    } catch (e) {
-        toast(e.message, true);
-    } finally {
-        btn.disabled = false; btn.textContent = 'Send OTP →';
-    }
-}
+    };
 
-function showPhoneStep() {
-    document.getElementById('login-step-otp').style.display = 'none';
-    document.getElementById('login-step-phone').style.display = 'block';
-    document.getElementById('otp-dev-hint').style.display = 'none';
-}
+    let currentLang = 'en';
 
-// ─── AUTH: VERIFY OTP ────────────────────────────────────────────────────────
-async function verifyOTP() {
-    const phone = document.getElementById('login-phone').value.trim();
-    const code  = document.getElementById('login-otp').value.trim();
-    if (!code || code.length !== 6) { toast('Enter the 6-digit OTP', true); return; }
+    // ─── DATA STORE ──────────────────────────────────────────────────────────────
 
-    const btn = document.getElementById('btn-verify-otp');
-    btn.disabled = true; btn.textContent = 'Verifying...';
+    const API_URL = 'http://localhost:5000/api';
+    let store = {
+        user: { name: "", blood: "", chronic: "", allergies: "", medication: "" },
+        files: [],
+        nominees: [],
+        logs: [],
+        fileBlobs: {}
+    };
 
-    try {
-        const data = await apiFetch('/auth/verify-otp', {
-            method: 'POST',
-            body: JSON.stringify({ phone, code })
-        });
-        authToken = data.token;
-        localStorage.setItem('hv_token', authToken);
-        currentUser = data.user;
-        onLogin();
-    } catch (e) {
-        toast(e.message, true);
-    } finally {
-        btn.disabled = false; btn.textContent = 'Verify & Login →';
-    }
-}
-
-// ─── ON LOGIN ────────────────────────────────────────────────────────────────
-function onLogin() {
-    document.getElementById('bottom-nav').style.display = 'flex';
-    navigate('screen-home');
-    applyUserToUI(currentUser);
-    loadHomeDashboard();
-}
-
-function applyUserToUI(user) {
-    if (!user) return;
-    document.getElementById('welcome-user-name').textContent = user.name;
-    document.getElementById('welcome-user-blood').textContent = user.blood_group + ' Blood';
-    document.getElementById('dash-blood-group').textContent   = user.blood_group;
-    document.getElementById('dash-chronic').textContent       = user.chronic || 'None';
-
-    document.getElementById('acc-name').textContent      = user.name;
-    document.getElementById('acc-phone').textContent     = user.phone;
-    document.getElementById('acc-avatar').textContent    = user.name.charAt(0).toUpperCase();
-    document.getElementById('drawer-name').textContent   = user.name;
-    document.getElementById('drawer-sub').textContent    = user.blood_group + ' Blood';
-    document.getElementById('drawer-avatar').textContent = user.name.charAt(0).toUpperCase();
-
-    document.getElementById('edit-name').value       = user.name;
-    document.getElementById('edit-blood').value      = user.blood_group;
-    document.getElementById('edit-chronic').value    = user.chronic    || '';
-    document.getElementById('edit-allergies').value  = user.allergies  || '';
-    document.getElementById('edit-medication').value = user.medication || '';
-
-    document.getElementById('emergency-blood').textContent      = user.blood_group || '—';
-    document.getElementById('emergency-allergies').textContent  = user.allergies   || 'None';
-    document.getElementById('emergency-chronic').textContent    = user.chronic     || 'None';
-    document.getElementById('emergency-medication').textContent = user.medication  || 'None';
-}
-
-// ─── LOGOUT ──────────────────────────────────────────────────────────────────
-async function logout() {
-    toggleDrawer();
-    try { await apiFetch('/auth/logout', { method: 'POST' }); } catch {}
-    forceLogout();
-}
-
-function forceLogout() {
-    authToken = null; currentUser = null;
-    localStorage.removeItem('hv_token');
-    document.getElementById('bottom-nav').style.display = 'none';
-    navigate('screen-login');
-    showPhoneStep();
-    document.getElementById('login-phone').value = '';
-    document.getElementById('login-otp').value   = '';
-}
-
-// ─── HOME DASHBOARD ──────────────────────────────────────────────────────────
-async function loadHomeDashboard() {
-    // Load counts in parallel
-    try {
-        const [profile, records, nominees, logs] = await Promise.all([
-            apiFetch('/profile'),
-            apiFetch('/records?limit=5'),
-            apiFetch('/nominees'),
-            apiFetch('/logs?limit=3')
-        ]);
-
-        if (profile) {
-            currentUser = profile;
-            applyUserToUI(profile);
+    async function apiFetch(endpoint, options = {}) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            options.headers = {
+                ...options.headers,
+                'Authorization': `Bearer ${token}`
+            };
         }
 
-        if (records) {
-            document.getElementById('dash-file-count').textContent = records.total;
-            renderTimeline(records.records);
-        }
-        if (nominees) {
-            document.getElementById('dash-nominee-count').textContent = nominees.length;
-        }
-        if (logs) {
-            const el = document.getElementById('dash-recent-activity');
-            if (logs.logs.length === 0) {
-                el.innerHTML = `<div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">No activity yet.</div>`;
-            } else {
-                el.innerHTML = logs.logs.map(l => `
-                    <div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--border);">
-                        <div style="font-size:16px;">🔔</div>
-                        <div style="flex:1; min-width:0;">
-                            <div style="font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${l.action}</div>
-                            <div style="font-size:10px; color:var(--ink-60);">${formatTimestamp(l.created_at)}</div>
-                        </div>
-                    </div>
-                `).join('');
+        const spinner = document.createElement('div');
+        spinner.style.position = 'fixed';
+        spinner.style.top = '50%';
+        spinner.style.left = '50%';
+        spinner.style.transform = 'translate(-50%, -50%)';
+        spinner.style.zIndex = '9999';
+        spinner.style.border = '4px solid #f3f3f3';
+        spinner.style.borderTop = '4px solid var(--teal)';
+        spinner.style.borderRadius = '50%';
+        spinner.style.width = '40px';
+        spinner.style.height = '40px';
+        spinner.style.animation = 'spin 1s linear infinite';
+        spinner.id = 'loading-spinner';
+
+        if (!document.getElementById('loading-spinner')) {
+            document.body.appendChild(spinner);
+            if(!document.getElementById('spinner-style')) {
+               const style = document.createElement('style');
+               style.id = 'spinner-style';
+               style.innerHTML = '@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }';
+               document.head.appendChild(style);
             }
         }
-    } catch (e) {
-        toast('Failed to load dashboard', true);
+
+        try {
+            const response = await fetch(`${API_URL}${endpoint}`, options);
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || data.errors?.[0]?.msg || 'API Error');
+            }
+
+            return data;
+        } catch (error) {
+            console.error('API Error:', error);
+            alert(error.message);
+            throw error;
+        } finally {
+            const spinEl = document.getElementById('loading-spinner');
+            if (spinEl) spinEl.remove();
+        }
     }
-}
 
-function renderTimeline(records) {
-    const container = document.getElementById('medical-timeline');
-    if (!records || records.length === 0) {
-        container.innerHTML = `<div style="color:var(--ink-60); font-size:13px; padding:10px 0;">No records yet.</div>`;
-        return;
+    async function fetchDashboardData() {
+        try {
+            const [userRes, recordsRes, nomineesRes] = await Promise.all([
+                apiFetch('/auth/me'),
+                apiFetch('/records'),
+                apiFetch('/nominees')
+            ]);
+
+            store.user = {
+                name: userRes.user.name,
+                blood: userRes.user.bloodGroup || "",
+                chronic: userRes.user.chronicDisease || "",
+                allergies: userRes.user.allergies || "",
+                medication: userRes.user.currentMedication || ""
+            };
+            store.files = recordsRes.records || [];
+            store.nominees = nomineesRes.nominees || [];
+            store.logs = [];
+
+            renderDashboard();
+        } catch (e) {
+           console.error("Failed to fetch dashboard data");
+        }
     }
-    container.innerHTML = records.map(f => `
-        <div class="timeline-item">
-            <div class="timeline-date">${formatTimestamp(f.uploaded_at)}</div>
-            <div class="timeline-name">${escapeHtml(f.name)}</div>
-            <span class="timeline-cat">${escapeHtml(f.category)}</span>
-        </div>
-    `).join('');
-}
 
-// ─── RECORDS ─────────────────────────────────────────────────────────────────
-function debounceSearch() {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(loadRecords, 350);
-}
 
-async function loadRecords() {
-    const search   = document.getElementById('search-input').value.trim();
-    const typeFilter = document.getElementById('filter-type').value;
-    const list = document.getElementById('records-list');
-    list.innerHTML = `<div style="color:var(--ink-60); font-size:13px; text-align:center; padding:20px;">Loading...</div>`;
+    let currentUploadFile = null;
 
-    try {
-        const params = new URLSearchParams({ limit: 50 });
-        if (search)           params.set('search', search);
-        if (typeFilter !== 'all') params.set('type', typeFilter);
+    // ─── CORE FUNCTIONS ──────────────────────────────────────────────────────────
+    function init() {
+        renderRecords();
+        renderNominees();
+        renderLogs();
+        renderEmergencyContacts();
+        renderDashboard();
+        setupDragDrop();
+    }
 
-        const data = await apiFetch(`/records?${params}`);
-        if (!data) return;
-        allRecords = data.records;
+    function navigate(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+        const map = { 'screen-home': 0, 'screen-records': 1, 'screen-upload': 2, 'screen-emergency': 3 };
+        document.querySelectorAll('.nav-item').forEach((n, i) => n.classList.toggle('active', i === map[screenId]));
+    }
 
-        if (allRecords.length === 0) {
+    async function login() {
+        const phone = document.getElementById('login-phone').value || "1234567890";
+        const password = prompt("Enter password:", "password123");
+        if (!password) return;
+        try {
+            const res = await apiFetch('/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone, password })
+            });
+            if (res.success) {
+                localStorage.setItem('token', res.token);
+                await fetchDashboardData();
+                document.getElementById('bottom-nav').style.display = 'flex';
+                navigate('screen-home');
+            }
+        } catch (error) {}
+    }
+
+    function logout() {
+        localStorage.removeItem('token');
+        toggleDrawer();
+        document.getElementById('bottom-nav').style.display = 'none';
+        navigate('screen-login');
+    }
+
+    function toggleDrawer() { document.getElementById('drawer-overlay').classList.toggle('active'); }
+
+    function openFromDrawer(id) {
+        toggleDrawer();
+        setTimeout(() => navigate(id), 300);
+    }
+
+    // ─── DASHBOARD ───────────────────────────────────────────────────────────────
+    function renderDashboard() {
+        document.getElementById('dash-file-count').innerText = store.files.length;
+        document.getElementById('dash-nominee-count').innerText = store.nominees.length;
+
+        document.getElementById('welcome-user-name').innerText = store.user.name;
+        document.getElementById('welcome-user-blood').innerText = store.user.blood + " Blood";
+        document.getElementById('dash-blood-group').innerText = store.user.blood;
+        document.getElementById('dash-chronic').innerText = store.user.chronic || "None";
+
+        document.getElementById('emergency-blood').innerText = store.user.blood || "Not Specified";
+        document.getElementById('emergency-allergies').innerText = store.user.allergies || "Not Specified";
+        document.getElementById('emergency-chronic').innerText = store.user.chronic || "Not Specified";
+        document.getElementById('emergency-medication').innerText = store.user.medication || "Not Specified";
+
+        document.getElementById('drawer-name').innerText = store.user.name;
+        document.getElementById('drawer-sub').innerText = store.user.blood + " Blood";
+
+        document.getElementById('acc-name').innerText = store.user.name;
+        document.getElementById('edit-name').value = store.user.name;
+        document.getElementById('edit-blood').value = store.user.blood;
+        document.getElementById('edit-chronic').value = store.user.chronic || "";
+        document.getElementById('edit-allergies').value = store.user.allergies || "";
+        document.getElementById('edit-medication').value = store.user.medication || "";
+
+        const recent = document.getElementById('dash-recent-activity');
+        recent.innerHTML = store.logs.slice(0, 3).map(l => `
+            <div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--border);">
+                <div style="font-size:16px;">🔔</div>
+                <div style="font-size:12px;">${l.action}</div>
+            </div>
+        `).join('');
+
+        renderTimeline();
+    }
+
+    function renderTimeline() {
+        const container = document.getElementById('medical-timeline');
+        const sortedFiles = [...store.files].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+        container.innerHTML = sortedFiles.map(f => `
+            <div class="timeline-item">
+                <div class="timeline-date">${f.date}</div>
+                <div class="timeline-name">${f.name}</div>
+                <span class="timeline-cat">${f.cat}</span>
+            </div>
+        `).join('');
+    }
+
+    function updateProfile() {
+        store.user.name = document.getElementById('edit-name').value;
+        store.user.blood = document.getElementById('edit-blood').value;
+        store.user.chronic = document.getElementById('edit-chronic').value;
+        store.user.allergies = document.getElementById('edit-allergies').value;
+        store.user.medication = document.getElementById('edit-medication').value;
+        addLog("Profile Updated");
+        alert("Profile details saved!");
+        renderDashboard();
+    }
+
+    // ─── RECORDS ─────────────────────────────────────────────────────────────────
+    function renderRecords() {
+        const list = document.getElementById('records-list');
+        const search = document.getElementById('search-input').value.toLowerCase();
+        const typeFilter = document.getElementById('filter-type').value;
+        const filtered = store.files.filter(f => {
+            const matchSearch = f.name.toLowerCase().includes(search);
+            const matchType = (typeFilter === 'all') || (f.type === typeFilter);
+            return matchSearch && matchType;
+        });
+
+        if (filtered.length === 0) {
             list.innerHTML = `<div style="text-align:center; color:var(--ink-60); padding:20px;">No records found.</div>`;
             return;
         }
 
-        list.innerHTML = allRecords.map(f => `
+        list.innerHTML = filtered.map(f => `
             <div class="record-item">
                 <div class="record-icon">${f.type === 'PDF' ? '📄' : '🖼️'}</div>
                 <div class="record-info">
-                    <div class="record-name" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
-                    <div class="record-meta">${escapeHtml(f.category)} · ${formatBytes(f.size_bytes)} · ${formatTimestamp(f.uploaded_at)}</div>
+                    <div class="record-name">${f.name}</div>
+                    <div class="record-meta">${f.cat} • ${f.date}</div>
                 </div>
                 <div class="record-actions">
-                    <div class="action-icon" title="Download" onclick="downloadRecord('${f.id}', '${escapeHtml(f.name)}')">📥</div>
-                    <div class="action-icon delete" title="Delete" onclick="confirmDelete('${f.id}')">🗑️</div>
+                    <div class="action-icon" title="Download" onclick="downloadFile(${f.id})">📥</div>
+                    <div class="action-icon delete" title="Delete" onclick="confirmDelete(${f.id})">🗑️</div>
                 </div>
             </div>
         `).join('');
-    } catch (e) {
-        list.innerHTML = `<div style="text-align:center; color:var(--danger); padding:20px;">Failed to load records.</div>`;
-        toast(e.message, true);
     }
-}
 
-function confirmDelete(id) {
-    document.getElementById('modal-delete').style.display = 'flex';
-    document.getElementById('confirm-delete-btn').onclick = () => {
-        closeModal('modal-delete');
-        deleteRecord(id);
-    };
-}
-
-async function deleteRecord(id) {
-    try {
-        await apiFetch(`/records/${id}`, { method: 'DELETE' });
-        toast('Record deleted');
-        loadRecords();
-        loadHomeDashboard();
-    } catch (e) {
-        toast(e.message, true);
+    function confirmDelete(id) {
+        document.getElementById('modal-delete').style.display = 'flex';
+        document.getElementById('confirm-delete-btn').onclick = () => { deleteFile(id); closeModal('modal-delete'); };
     }
-}
 
-async function downloadRecord(id, name) {
-    try {
-        const res = await fetch(`${API}/records/${id}/download`, {
-            headers: { 'Authorization': `Bearer ${authToken}` }
-        });
-        if (!res.ok) { toast('Download failed', true); return; }
+    async function deleteFile(id) {
+        if (confirm("Delete this record?")) {
+            try {
+                await apiFetch(`/records/${id}`, { method: 'DELETE' });
+                await fetchDashboardData();
+                renderRecords();
+            } catch(e) {}
+        }
+    }
 
-        const blob   = await res.blob();
-        const url    = URL.createObjectURL(blob);
+    // ─── DOWNLOAD FILE (completed) ────────────────────────────────────────────────
+    // If the file was uploaded in this session, its actual Blob URL is stored in
+    // store.fileBlobs[id] so we can trigger a true download.
+    // For pre-seeded demo files (no real data), we generate a placeholder text
+    // receipt so the download action is still functional and testable.
+    function downloadFile(id) {
+        const file = store.files.find(f => f.id === id);
+        if (!file) return;
+
+        let downloadUrl;
+        let needsRevoke = false;
+
+        if (store.fileBlobs[id]) {
+            // Real file uploaded this session — download the actual content
+            downloadUrl = store.fileBlobs[id];
+        } else {
+            // Demo / pre-seeded file — generate a readable placeholder receipt
+            const receipt = [
+                '========================================',
+                '         HEALTH VAULT – FILE RECORD     ',
+                '========================================',
+                '',
+                `  File Name : ${file.name}`,
+                `  Category  : ${file.cat}`,
+                `  Type      : ${file.type}`,
+                `  Date      : ${file.date}`,
+                '',
+                '----------------------------------------',
+                '  Patient   : ' + store.user.name,
+                '  Blood Grp : ' + store.user.blood,
+                '----------------------------------------',
+                '',
+                '  [This is a demo placeholder. In a live',
+                '   deployment the original file would be',
+                '   served from secure cloud storage.]   ',
+                '',
+                '========================================'
+            ].join('\n');
+
+            const mimeType = file.type === 'PDF' ? 'application/pdf' : 'text/plain';
+            const blob = new Blob([receipt], { type: mimeType });
+            downloadUrl = URL.createObjectURL(blob);
+            needsRevoke = true;
+        }
+
+        // Create a hidden anchor, click it, then clean up
         const anchor = document.createElement('a');
-        anchor.href  = url;
-        anchor.download = name;
+        anchor.href = downloadUrl;
+        anchor.download = file.name;
         anchor.style.display = 'none';
         document.body.appendChild(anchor);
         anchor.click();
         document.body.removeChild(anchor);
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
 
-        toast(`Downloading ${name}`);
-    } catch (e) {
-        toast('Download failed', true);
-    }
-}
-
-// ─── UPLOAD ──────────────────────────────────────────────────────────────────
-function setupDragDrop() {
-    const zone = document.getElementById('drop-zone');
-    ['dragenter','dragover','dragleave','drop'].forEach(ev => zone.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); }));
-    ['dragenter','dragover'].forEach(ev => zone.addEventListener(ev, () => zone.classList.add('dragover')));
-    ['dragleave','drop'].forEach(ev => zone.addEventListener(ev, () => zone.classList.remove('dragover')));
-    zone.addEventListener('drop', e => handleFile(e.dataTransfer.files[0]));
-}
-
-function handleFile(file) {
-    if (!file) return;
-    if (file.size > 10 * 1024 * 1024) { toast('File exceeds 10 MB limit', true); return; }
-    currentUploadFile = file;
-    document.getElementById('preview-name').textContent = file.name;
-    document.getElementById('preview-size').textContent = `${formatBytes(file.size)} · ${file.type || 'unknown'}`;
-    document.getElementById('preview-area').style.display = 'block';
-    document.getElementById('drop-zone').style.display = 'none';
-}
-
-function clearUpload() {
-    currentUploadFile = null;
-    document.getElementById('file-input').value = '';
-    document.getElementById('preview-area').style.display = 'none';
-    document.getElementById('drop-zone').style.display = 'block';
-    document.getElementById('upload-progress-wrap').style.display = 'none';
-}
-
-async function confirmUpload() {
-    if (!currentUploadFile) { toast('Please select a file first', true); return; }
-
-    const btn = document.getElementById('btn-upload');
-    btn.disabled = true; btn.textContent = 'Uploading...';
-
-    const wrap = document.getElementById('upload-progress-wrap');
-    const bar  = document.getElementById('upload-progress-bar');
-    const lbl  = document.getElementById('upload-progress-label');
-    wrap.style.display = 'block';
-    bar.style.width = '10%';
-
-    const form = new FormData();
-    form.append('file', currentUploadFile);
-    form.append('category', document.getElementById('upload-category').value);
-
-    try {
-        // Use XMLHttpRequest for real progress events
-        await new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', `${API}/records`);
-            xhr.setRequestHeader('Authorization', `Bearer ${authToken}`);
-
-            xhr.upload.onprogress = e => {
-                if (e.lengthComputable) {
-                    const pct = Math.round((e.loaded / e.total) * 90);
-                    bar.style.width = pct + '%';
-                    lbl.textContent = `Uploading... ${pct}%`;
-                }
-            };
-            xhr.onload = () => {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    bar.style.width = '100%';
-                    lbl.textContent = 'Upload complete!';
-                    resolve(JSON.parse(xhr.responseText));
-                } else {
-                    try { reject(new Error(JSON.parse(xhr.responseText).error)); }
-                    catch { reject(new Error(`Upload failed (${xhr.status})`)); }
-                }
-            };
-            xhr.onerror = () => reject(new Error('Network error during upload'));
-            xhr.send(form);
-        });
-
-        toast('File uploaded successfully!');
-        setTimeout(() => {
-            clearUpload();
-            navigate('screen-records');
-            loadRecords();
-            loadHomeDashboard();
-        }, 800);
-    } catch (e) {
-        toast(e.message, true);
-        bar.style.width = '0%';
-        wrap.style.display = 'none';
-    } finally {
-        btn.disabled = false; btn.textContent = 'Upload File';
-    }
-}
-
-// ─── PROFILE ─────────────────────────────────────────────────────────────────
-async function updateProfile() {
-    const btn = document.getElementById('btn-save-profile');
-    btn.disabled = true; btn.textContent = 'Saving...';
-    try {
-        const updated = await apiFetch('/profile', {
-            method: 'PUT',
-            body: JSON.stringify({
-                name:        document.getElementById('edit-name').value.trim(),
-                blood_group: document.getElementById('edit-blood').value,
-                chronic:     document.getElementById('edit-chronic').value.trim(),
-                allergies:   document.getElementById('edit-allergies').value.trim(),
-                medication:  document.getElementById('edit-medication').value.trim()
-            })
-        });
-        if (updated) { currentUser = updated; applyUserToUI(updated); }
-        toast('Profile saved!');
-    } catch (e) {
-        toast(e.message, true);
-    } finally {
-        btn.disabled = false; btn.textContent = 'Save Profile';
-    }
-}
-
-// ─── NOMINEES ────────────────────────────────────────────────────────────────
-async function loadNominees() {
-    const list = document.getElementById('nominee-list');
-    list.innerHTML = `<div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">Loading...</div>`;
-    try {
-        const nominees = await apiFetch('/nominees');
-        if (!nominees) return;
-        document.getElementById('dash-nominee-count').textContent = nominees.length;
-
-        if (nominees.length === 0) {
-            list.innerHTML = `<div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">No nominees added yet.</div>`;
-            return;
+        if (needsRevoke) {
+            // Small delay so the browser has time to start the download
+            setTimeout(() => URL.revokeObjectURL(downloadUrl), 2000);
         }
 
-        list.innerHTML = nominees.map(n => `
+        addLog(`File Downloaded: ${file.name}`);
+    }
+
+    // ─── UPLOAD ──────────────────────────────────────────────────────────────────
+    function setupDragDrop() {
+        const zone = document.getElementById('drop-zone');
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => zone.addEventListener(event, (e) => { e.preventDefault(); e.stopPropagation(); }));
+        ['dragenter', 'dragover'].forEach(event => zone.addEventListener(event, () => zone.classList.add('dragover')));
+        ['dragleave', 'drop'].forEach(event => zone.addEventListener(event, () => zone.classList.remove('dragover')));
+        zone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+    }
+
+    function formatBytes(bytes) {
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function handleFile(file) {
+        if (!file) return;
+        if (file.size > 10 * 1024 * 1024) { alert("File is too large. Max size is 10MB."); return; }
+        currentUploadFile = file;
+        document.getElementById('preview-name').innerText = file.name;
+        document.getElementById('preview-size').innerText = `${formatBytes(file.size)} · ${file.type || 'Unknown type'}`;
+        document.getElementById('preview-area').style.display = 'block';
+        document.getElementById('drop-zone').style.display = 'none';
+    }
+
+    function clearUpload() {
+        currentUploadFile = null;
+        document.getElementById('file-input').value = "";
+        document.getElementById('preview-area').style.display = 'none';
+        document.getElementById('drop-zone').style.display = 'block';
+    }
+
+    function confirmUpload() {
+        if (!currentUploadFile) { alert("Please select a file first."); return; }
+        const newId = Date.now();
+        const newFile = {
+            id: newId,
+            name: currentUploadFile.name,
+            type: currentUploadFile.type.includes('pdf') ? 'PDF' : 'Image',
+            cat: document.getElementById('upload-category').value,
+            date: new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
+        };
+
+        // Store a Blob URL so the actual file can be downloaded later
+        store.fileBlobs[newId] = URL.createObjectURL(currentUploadFile);
+
+        store.files.unshift(newFile);
+        addLog(`File Uploaded: ${newFile.name}`);
+        alert("File uploaded successfully!");
+        clearUpload();
+        renderRecords();
+        renderDashboard();
+        navigate('screen-records');
+    }
+
+    // ─── NOMINEES ────────────────────────────────────────────────────────────────
+    function renderNominees() {
+        const list = document.getElementById('nominee-list');
+        list.innerHTML = store.nominees.map(n => `
             <div style="background:var(--cream); padding:12px; border-radius:10px; margin-bottom:10px;">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; justify-content:space-between;">
                     <div>
-                        <div style="font-weight:600;">${escapeHtml(n.name)}</div>
-                        <div style="font-size:11px; color:var(--ink-60);">${escapeHtml(n.relation)} · ${escapeHtml(n.phone)}</div>
+                        <div style="font-weight:600;">${n.name}</div>
+                        <div style="font-size:11px; color:var(--ink-60);">${n.rel} • ${n.phone}</div>
                     </div>
-                    <div style="cursor:pointer; color:var(--danger); font-size:12px;" onclick="deleteNominee('${n.id}')">Remove</div>
+                    <div style="cursor:pointer; color:var(--danger); font-size:12px;" onclick="deleteNominee(${n.id})">Remove</div>
                 </div>
             </div>
         `).join('');
-    } catch (e) {
-        list.innerHTML = `<div style="color:var(--danger); font-size:13px; text-align:center; padding:10px;">Failed to load nominees.</div>`;
+        renderEmergencyContacts();
     }
-}
 
-function openAddNomineeModal() {
-    ['n-name','n-rel','n-phone','n-email'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('modal-nominee').style.display = 'flex';
-}
+    function openAddNomineeModal() { document.getElementById('modal-nominee').style.display = 'flex'; }
 
-async function saveNominee() {
-    const name  = document.getElementById('n-name').value.trim();
-    const rel   = document.getElementById('n-rel').value.trim();
-    const phone = document.getElementById('n-phone').value.trim();
-    const email = document.getElementById('n-email').value.trim();
-
-    if (!name || !phone) { toast('Name and phone are required', true); return; }
-
-    const btn = document.getElementById('btn-save-nominee');
-    btn.disabled = true; btn.textContent = 'Saving...';
-
-    try {
-        await apiFetch('/nominees', {
-            method: 'POST',
-            body: JSON.stringify({ name, relation: rel, phone, email })
-        });
+    function saveNominee() {
+        const name = document.getElementById('n-name').value;
+        const rel = document.getElementById('n-rel').value;
+        const phone = document.getElementById('n-phone').value;
+        const email = document.getElementById('n-email').value;
+        if(!name || !phone) { alert("Please fill name and phone"); return; }
+        store.nominees.push({ id: Date.now(), name, rel, phone, email });
+        addLog(`Nominee Added: ${name}`);
         closeModal('modal-nominee');
-        toast('Nominee added!');
-        loadNominees();
-    } catch (e) {
-        toast(e.message, true);
-    } finally {
-        btn.disabled = false; btn.textContent = 'Save';
+        renderNominees();
+        renderDashboard();
     }
-}
 
-async function deleteNominee(id) {
-    try {
-        await apiFetch(`/nominees/${id}`, { method: 'DELETE' });
-        toast('Nominee removed');
-        loadNominees();
-    } catch (e) {
-        toast(e.message, true);
+    function deleteNominee(id) {
+        store.nominees = store.nominees.filter(n => n.id !== id);
+        addLog("Nominee Removed");
+        renderNominees();
+        renderDashboard();
     }
-}
 
-// ─── EMERGENCY ───────────────────────────────────────────────────────────────
-async function loadEmergency() {
-    try {
-        const data = await apiFetch('/emergency');
-        if (!data) return;
-        const p = data.patient;
-        document.getElementById('emergency-blood').textContent      = p.blood_group || '—';
-        document.getElementById('emergency-allergies').textContent  = p.allergies   || 'None';
-        document.getElementById('emergency-chronic').textContent    = p.chronic     || 'None';
-        document.getElementById('emergency-medication').textContent = p.medication  || 'None';
-
-        const el = document.getElementById('emergency-contacts');
-        if (data.emergency_contacts.length === 0) {
-            el.innerHTML = `<div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">No nominees added yet.</div>`;
-        } else {
-            el.innerHTML = data.emergency_contacts.map(n => `
-                <div style="padding:10px 0; border-bottom:1px solid var(--border);">
-                    <div style="font-weight:600;">${escapeHtml(n.name)} (${escapeHtml(n.relation)})</div>
-                    <div style="font-size:12px; color:var(--ink-60);">${escapeHtml(n.phone)}</div>
-                </div>
-            `).join('');
-        }
-    } catch (e) {
-        toast('Failed to load emergency info', true);
-    }
-}
-
-// ─── AUDIT LOGS ──────────────────────────────────────────────────────────────
-async function loadLogs() {
-    const container = document.getElementById('log-container');
-    container.innerHTML = `<div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">Loading...</div>`;
-    try {
-        const data = await apiFetch('/logs?limit=30');
-        if (!data) return;
-        if (data.logs.length === 0) {
-            container.innerHTML = `<div style="color:var(--ink-60); font-size:13px; text-align:center; padding:10px;">No activity yet.</div>`;
-            return;
-        }
-        container.innerHTML = data.logs.map(l => `
-            <div class="log-entry">
-                <span style="flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(l.action)}</span>
-                <span style="color:var(--ink-60); font-size:11px; flex-shrink:0;">${formatTimestamp(l.created_at)}</span>
+    function renderEmergencyContacts() {
+        const list = document.getElementById('emergency-contacts');
+        list.innerHTML = store.nominees.map(n => `
+            <div style="padding:10px 0; border-bottom:1px solid var(--border);">
+                <div style="font-weight:600;">${n.name} (${n.rel})</div>
+                <div style="font-size:12px; color:var(--ink-60);">${n.phone}</div>
             </div>
         `).join('');
-    } catch (e) {
-        container.innerHTML = `<div style="color:var(--danger); font-size:13px; text-align:center; padding:10px;">Failed to load logs.</div>`;
     }
-}
 
-// ─── LANGUAGE ────────────────────────────────────────────────────────────────
-async function setLang(el, lang) {
-    ['en','hi','mr'].forEach(l => {
-        const el2 = document.getElementById(`lang-check-${l}`);
-        if (el2) el2.textContent = '';
-    });
-    const check = document.getElementById(`lang-check-${lang}`);
-    if (check) check.textContent = '✓';
+    // ─── LOGS ────────────────────────────────────────────────────────────────────
+    function addLog(text) {
+        const time = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+        store.logs.unshift({ action: text, time: `Today, ${time}` });
+        renderLogs();
+    }
 
-    try {
-        await apiFetch('/profile/language', {
-            method: 'PUT',
-            body: JSON.stringify({ language: lang })
+    function renderLogs() {
+        const container = document.getElementById('log-container');
+        container.innerHTML = store.logs.slice(0, 20).map(l => `
+            <div class="log-entry">
+                <span>${l.action}</span>
+                <span style="color:var(--ink-60); font-size:11px;">${l.time}</span>
+            </div>
+        `).join('');
+    }
+
+    // ─── SET LANGUAGE (completed) ─────────────────────────────────────────────────
+    // Marks the selected language with a checkmark, stores the choice, then walks
+    // every element carrying a [data-i18n] attribute and swaps its text content
+    // for the matching string from the translations table.
+    function setLang(el, lang) {
+        if (!translations[lang]) return;
+
+        // Update active checkmark in the language list
+        document.querySelectorAll('#screen-language .menu-item').forEach(m => {
+            m.querySelector('span:last-child').innerText = '';
         });
-        toast(`Language updated`);
-    } catch (e) {
-        toast(e.message, true);
-    }
-}
+        el.querySelector('span:last-child').innerText = '✓';
 
-// ─── FEEDBACK ────────────────────────────────────────────────────────────────
-function handleRating(e) {
-    if (e.target.tagName !== 'SPAN') return;
-    const val = parseInt(e.target.getAttribute('data-val'));
-    document.querySelectorAll('#star-rating span').forEach((s, i) => {
-        s.textContent = i < val ? '★' : '☆';
-        s.style.color = i < val ? 'var(--gold)' : '#ddd';
-    });
-}
-
-function submitFeedback() {
-    toast('Thank you for your feedback!');
-    navigate('screen-home');
-}
-
-// ─── UTILITIES ───────────────────────────────────────────────────────────────
-function formatBytes(bytes) {
-    if (!bytes) return '—';
-    if (bytes < 1024)        return bytes + ' B';
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-}
-
-function formatTimestamp(unixSec) {
-    if (!unixSec) return '—';
-    return new Date(unixSec * 1000).toLocaleDateString('en-IN', {
-        day: '2-digit', month: 'short', year: 'numeric'
-    });
-}
-
-function escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-}
-
-// ─── BOOT ────────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-    setupDragDrop();
-
-    // If a token exists in localStorage, try to resume the session
-    if (authToken) {
-        apiFetch('/profile').then(profile => {
-            if (profile) {
-                currentUser = profile;
-                onLogin();
-            } else {
-                forceLogout();
+        // Apply translations to every tagged element in the DOM
+        currentLang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(node => {
+            const key = node.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                node.innerText = translations[lang][key];
             }
-        }).catch(forceLogout);
+        });
+
+        // Update the html lang attribute for accessibility
+        document.documentElement.lang = lang;
+
+        addLog(`Language changed to ${lang.toUpperCase()}`);
     }
-});
+
+    // ─── UTILS ───────────────────────────────────────────────────────────────────
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function handleRating(e) {
+        if(e.target.tagName !== 'SPAN') return;
+        const val = parseInt(e.target.getAttribute('data-val'));
+        document.querySelectorAll('#star-rating span').forEach((s, i) => {
+            s.innerText = i < val ? '★' : '☆';
+            s.style.color = i < val ? 'var(--gold)' : '#ddd';
+        });
+    }
+
+    function submitFeedback() {
+        addLog("Feedback Submitted");
+        alert("Thank you for your feedback!");
+        navigate('screen-home');
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>

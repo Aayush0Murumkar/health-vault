@@ -761,27 +761,93 @@
     let currentLang = 'en';
 
     // ─── DATA STORE ──────────────────────────────────────────────────────────────
+
+    const API_URL = 'http://localhost:5000/api';
     let store = {
-        user: { name: "Aayush Murumkar", blood: "O+", chronic: "Diabetes", allergies: "Penicillin", medication: "Metformin 500mg" },
-        files: [
-            { id: 1, name: "Blood_Test_Report.pdf", type: "PDF", cat: "Lab Report", date: "12 Oct 2023" },
-            { id: 2, name: "Chest_XRay.jpg", type: "Image", cat: "Scan", date: "05 Sep 2023" },
-            { id: 3, name: "Prescription_Diabetes.pdf", type: "PDF", cat: "Prescription", date: "01 Aug 2023" },
-            { id: 4, name: "ECG_Report.pdf", type: "PDF", cat: "Lab Report", date: "20 July 2023" },
-            { id: 5, name: "Vitamin_D_Test.pdf", type: "PDF", cat: "Lab Report", date: "10 May 2023" },
-            { id: 6, name: "Old_Prescription.pdf", type: "PDF", cat: "Prescription", date: "02 Jan 2023" }
-        ],
-        nominees: [
-            { id: 1, name: "Priya Mehta", rel: "Wife", phone: "+91 98765 43210", email: "priya@example.com" },
-            { id: 2, name: "Amit Kumar", rel: "Brother", phone: "+91 87654 32109", email: "amit@example.com" }
-        ],
-        logs: [
-            { action: "User Logged in", time: "Today, 09:41 AM" },
-            { action: "File Uploaded: Blood_Test_Report.pdf", time: "Yesterday, 02:30 PM" }
-        ],
-        // Stores actual File objects for files that were uploaded in this session
+        user: { name: "", blood: "", chronic: "", allergies: "", medication: "" },
+        files: [],
+        nominees: [],
+        logs: [],
         fileBlobs: {}
     };
+
+    async function apiFetch(endpoint, options = {}) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            options.headers = {
+                ...options.headers,
+                'Authorization': `Bearer ${token}`
+            };
+        }
+
+        const spinner = document.createElement('div');
+        spinner.style.position = 'fixed';
+        spinner.style.top = '50%';
+        spinner.style.left = '50%';
+        spinner.style.transform = 'translate(-50%, -50%)';
+        spinner.style.zIndex = '9999';
+        spinner.style.border = '4px solid #f3f3f3';
+        spinner.style.borderTop = '4px solid var(--teal)';
+        spinner.style.borderRadius = '50%';
+        spinner.style.width = '40px';
+        spinner.style.height = '40px';
+        spinner.style.animation = 'spin 1s linear infinite';
+        spinner.id = 'loading-spinner';
+
+        if (!document.getElementById('loading-spinner')) {
+            document.body.appendChild(spinner);
+            if(!document.getElementById('spinner-style')) {
+               const style = document.createElement('style');
+               style.id = 'spinner-style';
+               style.innerHTML = '@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }';
+               document.head.appendChild(style);
+            }
+        }
+
+        try {
+            const response = await fetch(`${API_URL}${endpoint}`, options);
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || data.errors?.[0]?.msg || 'API Error');
+            }
+
+            return data;
+        } catch (error) {
+            console.error('API Error:', error);
+            alert(error.message);
+            throw error;
+        } finally {
+            const spinEl = document.getElementById('loading-spinner');
+            if (spinEl) spinEl.remove();
+        }
+    }
+
+    async function fetchDashboardData() {
+        try {
+            const [userRes, recordsRes, nomineesRes] = await Promise.all([
+                apiFetch('/auth/me'),
+                apiFetch('/records'),
+                apiFetch('/nominees')
+            ]);
+
+            store.user = {
+                name: userRes.user.name,
+                blood: userRes.user.bloodGroup || "",
+                chronic: userRes.user.chronicDisease || "",
+                allergies: userRes.user.allergies || "",
+                medication: userRes.user.currentMedication || ""
+            };
+            store.files = recordsRes.records || [];
+            store.nominees = nomineesRes.nominees || [];
+            store.logs = [];
+
+            renderDashboard();
+        } catch (e) {
+           console.error("Failed to fetch dashboard data");
+        }
+    }
+
 
     let currentUploadFile = null;
 
@@ -802,12 +868,27 @@
         document.querySelectorAll('.nav-item').forEach((n, i) => n.classList.toggle('active', i === map[screenId]));
     }
 
-    function login() {
-        document.getElementById('bottom-nav').style.display = 'flex';
-        navigate('screen-home');
+    async function login() {
+        const phone = document.getElementById('login-phone').value || "1234567890";
+        const password = prompt("Enter password:", "password123");
+        if (!password) return;
+        try {
+            const res = await apiFetch('/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone, password })
+            });
+            if (res.success) {
+                localStorage.setItem('token', res.token);
+                await fetchDashboardData();
+                document.getElementById('bottom-nav').style.display = 'flex';
+                navigate('screen-home');
+            }
+        } catch (error) {}
     }
 
     function logout() {
+        localStorage.removeItem('token');
         toggleDrawer();
         document.getElementById('bottom-nav').style.display = 'none';
         navigate('screen-login');
@@ -915,17 +996,14 @@
         document.getElementById('confirm-delete-btn').onclick = () => { deleteFile(id); closeModal('modal-delete'); };
     }
 
-    function deleteFile(id) {
-        const file = store.files.find(f => f.id === id);
-        store.files = store.files.filter(f => f.id !== id);
-        // Remove the stored blob if it exists
-        if (store.fileBlobs[id]) {
-            URL.revokeObjectURL(store.fileBlobs[id]);
-            delete store.fileBlobs[id];
+    async function deleteFile(id) {
+        if (confirm("Delete this record?")) {
+            try {
+                await apiFetch(`/records/${id}`, { method: 'DELETE' });
+                await fetchDashboardData();
+                renderRecords();
+            } catch(e) {}
         }
-        addLog(`File Deleted: ${file.name}`);
-        renderRecords();
-        renderDashboard();
     }
 
     // ─── DOWNLOAD FILE (completed) ────────────────────────────────────────────────
